@@ -1,7 +1,7 @@
 package com.example.todo_notes;
 
 import com.example.todo_notes.model.Note;
-import com.example.todo_notes.service.NoteService;
+import com.example.todo_notes.service.NoteServiceImpl;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
@@ -15,7 +15,7 @@ public class TodoNotesApplication {
 	}
 
 	@Bean
-	CommandLineRunner demo(NoteService noteService) {
+	CommandLineRunner demo(NoteServiceImpl noteService) {
 		return args -> {
 			Note n1 = new Note(null, "First", "Hello");
 			noteService.add(n1);
