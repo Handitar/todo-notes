@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <title>Notes</title>
+</head>
+<body>
+
+<h1>Notes</h1>
+
+<div>
+  <!-- Вивід списку -->
+  <div th:if="${#lists.isEmpty(notes)}">
+    <p>No notes yet.</p>
+  </div>
+
+  <div th:each="n : ${notes}" style="border:1px solid #ccc; padding:10px; margin:10px 0;">
+    <h3 th:text="${n.title}">Title</h3>
+    <p th:text="${n.content}">Content</p>
+
+    <!-- Редагувати -->
+    <a th:href="@{/note/edit(id=${n.id})}">Edit</a>
+
+    <!-- Видалити (POST) -->
+    <form th:action="@{/note/delete}" method="post" style="display:inline;">
+      <input type="hidden" name="id" th:value="${n.id}" />
+      <button type="submit">Delete</button>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
